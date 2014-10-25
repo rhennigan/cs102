@@ -1,5 +1,7 @@
-#ifndef _LIB_LIST_H_
-#define _LIB_LIST_H_
+// lib/list.h - Copyright 2014, Richard Hennigan
+
+#ifndef LIB_LIST_H_
+#define LIB_LIST_H_
 
 typedef struct node_s {
   struct node_s * next;
@@ -15,9 +17,10 @@ typedef struct list_s {
 
 node_t * node_init(void * data);
 list_t * list_init(void);
-void list_insert(list_t * list, void * data);
-void list_append(list_t * list, void * data);
-void list_delete(list_t * list);
+void list_insf(list_t * list, void * data);
+void list_insr(list_t * list, void * data);
+void list_delf(list_t * list);
+void list_delr(list_t * list);
 void list_dispose(list_t * list);
 
-#endif
+#endif  // LIB_LIST_H_
