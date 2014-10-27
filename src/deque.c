@@ -14,44 +14,44 @@ void deque_clear(deque_t * deque) {
   deque = deque_init();
 }
 
-void deque_peekf(deque_t * deque, void * addr) {
+void deque_peekf(deque_t * deque, void * addr, size_t size) {
   if (deque_isempty(deque)) {
     perror("deque_peekf: EMPTY");
     exit(EXIT_FAILURE);
   } else {
     addr_t first = deque->head->data;
-    memcpy(addr, first, ADDR_SIZE);
+    memcpy(addr, first, size);
   }
 }
 
-void deque_peekr(deque_t * deque, void * addr) {
+void deque_peekr(deque_t * deque, void * addr, size_t size) {
   if (deque_isempty(deque)) {
     perror("deque_peekr: EMPTY");
     exit(EXIT_FAILURE);
   } else {
     addr_t last = deque->tail->data;
-    memcpy(addr, last, ADDR_SIZE);
+    memcpy(addr, last, size);
   }
 }
 
-void deque_dequeuef(deque_t * deque, void * addr) {
+void deque_dequeuef(deque_t * deque, void * addr, size_t size) {
   if (deque_isempty(deque)) {
     perror("deque_dequeuef: EMPTY");
     exit(EXIT_FAILURE);
   } else {
     addr_t first = deque->head->data;
-    memcpy(addr, first, ADDR_SIZE);
+    memcpy(addr, first, size);
     list_delf(deque);
   }
 }
 
-void deque_dequeuer(deque_t * deque, void * addr) {
+void deque_dequeuer(deque_t * deque, void * addr, size_t size) {
   if (deque_isempty(deque)) {
     perror("deque_dequeuef: EMPTY");
     exit(EXIT_FAILURE);
   } else {
     addr_t last = deque->tail->data;
-    memcpy(addr, last, ADDR_SIZE);
+    memcpy(addr, last, size);
     list_delr(deque);
   }
 }

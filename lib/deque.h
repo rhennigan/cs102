@@ -12,11 +12,11 @@ typedef list_t deque_t;
 deque_t * deque_init(void);
 void deque_clear(deque_t * deque);
 
-void deque_peekf(deque_t * deque, void * addr);
-void deque_peekr(deque_t * deque, void * addr);
+void deque_peekf(deque_t * deque, void * addr, size_t size);
+void deque_peekr(deque_t * deque, void * addr, size_t size);
 
-void deque_dequeuef(deque_t * deque, void * addr);
-void deque_dequeuer(deque_t * deque, void * addr);
+void deque_dequeuef(deque_t * deque, void * addr, size_t size);
+void deque_dequeuer(deque_t * deque, void * addr, size_t size);
 
 void deque_enqueuef(deque_t * deque, void * data);
 void deque_enqueuer(deque_t * deque, void * data);

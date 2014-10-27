@@ -23,7 +23,8 @@ list_t * list_init(void) {
 
 void list_insf(list_t * list, void * data) {
   if (list->length == 0) {
-    list->head->data = data;
+    free(list->head);
+    list->head = node_init(data);
   } else {
     node_t * new_node = node_init(data);
     new_node->next = list->head;
@@ -37,7 +38,8 @@ void list_insf(list_t * list, void * data) {
 
 void list_insr(list_t * list, void * data) {
   if (list->length == 0) {
-    list->head->data = data;
+    free(list->head);
+    list->head = node_init(data);
   } else {
     node_t * new_node = node_init(data);
     new_node->next = list->head;
@@ -53,6 +55,10 @@ void list_delf(list_t * list) {
   if (list->length == 0) {
     perror("list_delf: EMPTY");
     exit(EXIT_FAILURE);
+  } else if (list->length == 1) {
+    list_dispose(list);
+    list = NULL;
+    list = list_init();
   } else {
     node_t * first = list->head;
     list->head = first->next;
@@ -67,6 +73,10 @@ void list_delr(list_t * list) {
   if (list->length == 0) {
     perror("list_delr: EMPTY");
     exit(EXIT_FAILURE);
+  } else if (list->length == 1) {
+    list_dispose(list);
+    list = NULL;
+    list = list_init();
   } else {
     node_t * last = list->tail;
     list->tail = last->prev;

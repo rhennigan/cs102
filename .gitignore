@@ -1,3 +1,5 @@
 *.o
 *~
 queue_test
+stock_ledger
+core
